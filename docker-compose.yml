@@ -1,3 +1,4 @@
+# https://github.com/NlightN22/3x-ui-docker.git
 services:
   3x-ui:
     image: ghcr.io/mhsanaei/3x-ui:latest

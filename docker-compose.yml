@@ -1,0 +1,20 @@
+services:
+  3x-ui:
+    image: ghcr.io/mhsanaei/3x-ui:latest
+    container_name: 3x-ui
+    volumes:
+      - $PWD/db/:/etc/x-ui/
+      - $PWD/re-filter.dat:/app/bin/re-filter.dat # wget https://github.com/runetfreedom/russia-blocked-geoip/releases/download/202601301541/re-filter.dat
+      - /etc/letsencrypt/live/${DOMAIN}/fullchain.pem:/root/cert/server.crt
+      - /etc/letsencrypt/live/${DOMAIN}/privkey.pem:/root/cert/server.key
+    environment:
+      XRAY_VMESS_AEAD_FORCED: "false"
+      XUI_ENABLE_FAIL2BAN: "true"
+    tty: true
+    network_mode: host
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

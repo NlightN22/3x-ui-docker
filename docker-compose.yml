@@ -21,7 +21,7 @@ services:
         max-file: "3"
 
   xp2pdiag:
-    image: oncharterliz/xp2pdiag:0.2.6
+    image: oncharterliz/xp2pdiag:latest
     container_name: xp2pdiag
     depends_on: 
       - 3x-ui
